@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio</title>
+    <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.0/dist/fitty.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 0%;
+            font-size: 24em;
+            color: #fff;
+            background-color: rgb(39, 39, 39);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock" class="clock">00:00:00</div>
+    <script>
+        (function currentTime() {
+            let clock = document.getElementById("clock")
+            let date = new Date()
+            let hh = date.getHours()
+            let mm = date.getMinutes()
+            let ss = date.getSeconds()
+            hh = (hh < 10) ? "0" + hh : hh
+            mm = (mm < 10) ? "0" + mm : mm
+            ss = (ss < 10) ? "0" + ss : ss
+            let time = hh + ":" + mm + ":" + ss
+            clock.innerText = time
+            fitty(clock)
+            let t = setTimeout(currentTime, 1000)
+        })()
+    </script>
+</body>
+
+</html>
