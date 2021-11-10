@@ -38,9 +38,14 @@
     <div id="clock" class="clock">00:00:00</div>
     <script>
         (function currentTime() {
+            const opts = {
+                hour: '2-digit',
+                hour12: false,
+                timeZone: location.hash.replace("#", "") || 'America/Sao_Paulo'
+            }
             const clock = document.getElementById("clock")
             const date = new Date()
-            const time = date.toLocaleString()
+            const time = date.toLocaleString([], opts)
             clock.innerText = time
             fitty(clock)
             setTimeout(currentTime, 1000)
